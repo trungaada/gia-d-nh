@@ -3,26 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>Quà 20/10 💖</title>
+<title>Quà 20/10 cho Em 💖</title>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 <style>
+  /* THÊM RESET: Cực kỳ quan trọng để đảm bảo căn giữa đúng trên di động */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Giúp padding/border không làm tăng kích thước phần tử */
+  }
+
   body {
     background: linear-gradient(135deg, #ffb6c1, #ffd6e0);
     font-family: 'Quicksand', sans-serif;
-    text-align: center;
     color: #ff1493;
-    padding-top: 15vh;
+    /* Đảm bảo body chiếm toàn bộ viewport */
     min-height: 100vh;
+    width: 100vw; 
     position: relative;
     overflow: hidden; 
+    
+    /* ***** CĂN CHÍNH GIỮA MÀN HÌNH BẰNG FLEXBOX (HOẠT ĐỘNG TỐT TRÊN ADR/PC) ***** */
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    flex-direction: column; 
+    /* ***************************************************************************** */
   }
 
-  /* CSS MỚI: Container để căn giữa nội dung chính */
   .main-content {
-      max-width: 90%; /* Giới hạn chiều rộng nội dung */
-      margin: 0 auto; /* Căn giữa theo chiều ngang */
-      position: relative; /* Đảm bảo nội dung nằm trên icon */
+      max-width: 90%; 
+      width: 450px; 
+      margin: 0; 
+      position: relative;
       z-index: 5;
+      text-align: center; 
+      padding: 20px; /* Thêm padding cho nội dung */
   }
 
   h1 {
@@ -31,7 +47,6 @@
     font-family: 'Dancing Script', cursive;
     margin-bottom: 20px;
     color: #e91e63;
-    /* Dòng chữ đã được căn giữa vì 'text-align: center' trong body */
   }
   
   @keyframes glow {
@@ -42,7 +57,6 @@
   p {
     font-size: 1.3em;
     margin-bottom: 30px;
-    /* Dòng chữ đã được căn giữa vì 'text-align: center' trong body */
   }
   button {
     background-color: #ff69b4;
@@ -86,7 +100,6 @@
     100% { transform: scale(1); }
   }
 
-  /* CSS cho icon nổi lên */
   .floating-icon {
       position: absolute;
       bottom: -50px; 
@@ -106,8 +119,13 @@
       100% { transform: translate(0, -120vh) rotate(360deg); opacity: 0; }
   }
 
-  /* RESPONSIVE */
+  /* RESPONSIVE cho điện thoại (Android) */
   @media (max-width: 600px) {
+    .main-content {
+      width: 100%; 
+      max-width: 100%;
+      padding: 20px 15px; 
+    }
     h1 {
       font-size: 2.2em;
     }
@@ -143,7 +161,7 @@
     }
 
     const body = document.body;
-    const totalIcons = 15; // Đã tối ưu hóa
+    const totalIcons = 15; 
     const cuteIcons = ['💖', '✨', '💕', '💌', '🌸', '💫', '❤️', '🌟', '🎀', '💞', '🌷', '💝'];
 
     function createFloatingIcon() {
@@ -168,13 +186,12 @@
         }, duration * 1000);
     }
 
-    // Tạo ra icon ban đầu
     for (let i = 0; i < totalIcons; i++) {
         createFloatingIcon();
     }
 
-    // Định kỳ tạo icon mới (Đã tối ưu hóa: 2s)
     setInterval(createFloatingIcon, 2000); 
   </script>
 </body>
 </html>
+
